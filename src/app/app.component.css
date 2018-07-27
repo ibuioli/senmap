@@ -1,0 +1,33 @@
+.container{
+  margin:10px auto;
+  width:90%;
+}
+.full-width{
+  width:100%;
+}
+.half-width{
+  width:50%;
+}
+.ip-width{
+  width:67%;
+}
+.port-width{
+  width:30%;
+}
+.span-width{
+  display:inline-block;
+  width:3%;
+  text-align:center;
+  font-weight: bold;
+}
+.mat-list .mat-list-item, .mat-list .mat-list-option, .mat-nav-list .mat-list-item, .mat-nav-list .mat-list-option, .mat-selection-list .mat-list-item, .mat-selection-list .mat-list-option {
+  height: 34px;
+}
+mat-toolbar{
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0;
+  z-index: 1000;
+  font: inherit;
+  padding:40px 10px;
+}

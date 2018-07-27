@@ -1,7 +1,10 @@
 # Senmap
 
-Aplicación para dispositivos Android que permite el envío de datos del Acelerómetro y Giroscopio a través de OSC a una computadora con conexión local. Especialmente pensado para Realidad Aumentada Espacial en Artes Escénicas.
+Application for Android devices that allows sending data from the Accelerometer and Gyroscope through OSC to a computer with local connection. Specially designed for Augmented Space Reality in Performing Arts.
 
-Compatible con el Software Animap:
+- Cordova-Angular Version
+- P5 Version (Deprecated)
 
-[Animap en github](https://github.com/ibuioli/animap)
+Compatible with Animap Software:
+
+[Animap on Github](https://github.com/ibuioli/animap)

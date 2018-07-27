@@ -1,0 +1,49 @@
+<mat-toolbar color="primary">
+  <mat-form-field class="ip-width">
+      <input #ip matInput placeholder="IP" [formControl]="ipControl">
+      <mat-error *ngIf="ipControl.hasError('pattern')">
+        Need IP format
+      </mat-error>
+  </mat-form-field>
+  <span class="span-width"> : </span>
+  <mat-form-field class="port-width">
+      <input #port matInput placeholder="port" [formControl]="numberControl">
+      <mat-error *ngIf="numberControl.hasError('pattern')">
+        Only numbers
+      </mat-error>
+  </mat-form-field>
+</mat-toolbar>
+
+<div class="container">
+  <div *ngIf="acc">
+    <mat-list class="half-width">
+       <h3 mat-subheader>Accelerometer</h3>
+       <mat-list-item>AccX: {{accx}}</mat-list-item>
+       <mat-list-item>AccY: {{accy}}</mat-list-item>
+       <mat-list-item>AccZ: {{accz}}</mat-list-item>
+    </mat-list>
+    <mat-divider></mat-divider>
+  </div>
+  <div *ngIf="gyr">
+    <mat-list class="half-width">
+       <h3 mat-subheader>Gyroscope</h3>
+       <mat-list-item>GyrX: {{gyrx}}</mat-list-item>
+       <mat-list-item>GyrY: {{gyry}}</mat-list-item>
+       <mat-list-item>GyrZ: {{gyrz}}</mat-list-item>
+    </mat-list>
+    <mat-divider></mat-divider>
+  </div>
+  <div *ngIf="mag">
+    <mat-list class="half-width">
+       <h3 mat-subheader>Magnetometer</h3>
+       <mat-list-item>MagX: {{magx}}</mat-list-item>
+       <mat-list-item>MagY: {{magy}}</mat-list-item>
+       <mat-list-item>MagZ: {{magz}}</mat-list-item>
+    </mat-list>
+    <mat-divider></mat-divider>
+  </div>
+  <div *ngIf="noSensors">
+    <mat-card>No sensors Avaiable</mat-card>
+  </div>
+  <br>
+</div>
