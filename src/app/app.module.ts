@@ -4,14 +4,20 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 /*Angular Material*/
-import { MatInputModule, MatDividerModule, MatListModule, MatToolbarModule, MatCardModule } from '@angular/material';
+import { MatInputModule, MatDividerModule, MatListModule,
+  MatButtonModule, MatTabsModule, MatToolbarModule, MatCardModule } from '@angular/material';
 
 /*Components*/
 import { AppComponent } from './app.component';
+/*Pipes*/
+import { RoundPipe } from './round.pipe';
+/*Services*/
+import { OscService } from './osc.service';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    RoundPipe
   ],
   imports: [
     BrowserModule,
@@ -21,10 +27,12 @@ import { AppComponent } from './app.component';
     MatToolbarModule,
     MatInputModule,
     MatDividerModule,
+    MatButtonModule,
     MatListModule,
+    MatTabsModule,
     MatCardModule
   ],
-  providers: [],
+  providers: [OscService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

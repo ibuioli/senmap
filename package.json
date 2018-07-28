@@ -7,7 +7,12 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "install:all": "npm install && cd cordova && cordova platform add android",
+    "cordova:build": "ng build --prod --build-optimizer --output-hashing none --base-href . --output-path cordova/www",
+    "cordova:run": "npm run cordova:build && cd cordova && cordova run android",
+    "cordova:debug": "npm run cordova:build && cd cordova && cordova build android -debug",
+    "cordova:release": "npm run cordova:build && cd cordova && cordova build android -release"
   },
   "private": true,
   "dependencies": {

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { OscService } from './osc.service';
 
 @Component({
   selector: 'app-root',
@@ -7,23 +8,22 @@ import { FormControl, Validators } from '@angular/forms';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'senmap';
+  public title:string = 'senmap';
   /*Data*/
   //Acc
-  public acc:boolean = false;
-  public accx:number = 0;
-  public accy:number = 0;
-  public accz:number = 0;
-  //Gyr
-  public gyr:boolean = false;
-  public gyrx:number = 0;
-  public gyry:number = 0;
-  public gyrz:number = 0;
-  //Mag
-  public mag:boolean = false;
-  public magx:number = 0;
-  public magy:number = 0;
-  public magz:number = 0;
+  public acc:any = {
+    available: false,
+    accx: 0,
+    accy: 0,
+    accz: 0
+  }
+  //Ori
+  public ori:any = {
+    available: false,
+    alpha: 0,
+    beta: 0,
+    gamma: 0
+  }
   //NoSensors
   public noSensors:boolean = true;
 
@@ -35,18 +35,53 @@ export class AppComponent {
     Validators.pattern('[0-9]*\.[0-9]*\.[0-9]*\.[0-9]*')
   ]);
 
-  /*App*/
-  constructor(){}
-
-  public ngOnInit():void{
-    document.addEventListener('deviceready', this.onDeviceReady.bind(this), false);
+  /*Terms&Languages*/
+  public terms:any = {
+    data: "Data",
+    control: "Control",
+    start: "Start Sending",
+    stop: "Stop",
+    ip_format: "Need IP format",
+    number_format: "Only numbers",
+    no_sensor_message: "No sensors Available",
+    acc: "Accelerometer",
+    ori: "Orientation"
   }
 
-  public onDeviceReady():void{
-    if(!this.acc && !this.gyr && !this.mag){
-      this.noSensors = true;
-    }else{
-      this.noSensors = false;
+  /*App*/
+  constructor(public osc: OscService){}
+
+  public ngOnInit():void{
+    document.addEventListener("deviceready", this.onDeviceReady, false);
+
+    this.getAccelerometer(this);
+    this.getOrientation(this);
+
+    setInterval(function(){}, 50);  //Refresh the Sensor Data
+  }
+
+  /*Device Ready*/
+  public onDeviceReady(){
+    console.log("Device Ready");
+  }
+
+  /*Sensors*/
+  public getAccelerometer(this_) {
+    window.ondevicemotion = function(e){
+      this_.acc.available = true;
+      this_.noSensors = false;
+      this_.acc.accx = e.accelerationIncludingGravity.x;
+      this_.acc.accy = e.accelerationIncludingGravity.y;
+      this_.acc.accz = e.accelerationIncludingGravity.z;
+    }
+  }
+  public getOrientation(this_) {
+    window.ondeviceorientation = function(e){
+      this_.ori.available = true;
+      this_.noSensors = false;
+      this_.ori.alpha = e.alpha;
+      this_.ori.beta = e.beta;
+      this_.ori.gamma = e.gamma;
     }
   }
 }
