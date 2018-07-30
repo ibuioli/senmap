@@ -9,6 +9,7 @@ import { OscService } from './osc.service';
 })
 export class AppComponent {
   public title:string = 'senmap';
+  public sender:boolean = false;
   /*Data*/
   //Acc
   public acc:any = {

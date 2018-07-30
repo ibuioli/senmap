@@ -6,12 +6,14 @@ declare var OSC:any;
 })
 export class OscService {
   public interval:any;
+  public sender:boolean;
 
   constructor() { }
 
   /*Control*/
-  public startSending(ip, port, acc, ori):void{
+  public startSending(ip, port, acc, ori):any{
     console.log("Start Sending: ", ip+":"+port);
+    this.sender = true;
 
     let osc = new OSC();
 		osc.startListening(10800,
@@ -46,5 +48,6 @@ export class OscService {
 
   public stopSending():void{
     clearInterval(this.interval);
+    this.sender = false;
   }
 }

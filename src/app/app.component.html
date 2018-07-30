@@ -18,8 +18,8 @@
       </mat-tab>
       <mat-tab [label]="terms.control">
         <div class="row-button">
-          <button mat-raised-button (click)="osc.startSending(ip.value, port.value, acc, ori)">{{terms.start}}</button>
-          <button mat-raised-button color="warn" (click)="osc.stopSending()">{{terms.stop}}</button>
+          <button mat-raised-button (click)="osc.startSending(ip.value, port.value, acc, ori);sender=osc.sender;">{{terms.start}}</button>
+          <button mat-raised-button color="warn" (click)="osc.stopSending();sender=osc.sender;">{{terms.stop}}</button>
         </div>
       </mat-tab>
     </mat-tab-group>
@@ -50,3 +50,5 @@
   </div>
   <br>
 </div>
+
+<div class="sender" *ngIf="sender"></div>
