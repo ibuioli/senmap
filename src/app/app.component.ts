@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { UntypedFormControl, Validators } from '@angular/forms';
 import { OscService } from './osc.service';
 
 @Component({
@@ -29,10 +29,10 @@ export class AppComponent implements OnInit {
   public noSensors = true;
 
   /*Validators*/
-  public numberControl = new FormControl('', [
+  public numberControl = new UntypedFormControl('', [
     Validators.pattern('[0-9]*')
   ]);
-  public ipControl = new FormControl('', [
+  public ipControl = new UntypedFormControl('', [
     Validators.pattern('[0-9]*\.[0-9]*\.[0-9]*\.[0-9]*')
   ]);
 
